@@ -30,8 +30,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->is_admin;
         });
         /* is_banned kapısını şimidden oluşturmak istedim. middleware ile bloklayacağız onlara özel bir sayfa göstereceğiz*/
+        /* banlı değilse */
         Gate::define('is_banned', function ($user) {
-            return $user->is_banned;
+            return !$user->is_banned;
         });
     }
 }
