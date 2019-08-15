@@ -38229,3 +38229,34 @@ readers do not read off random characters that represent icons */
 .breadcrumb-item + .breadcrumb-item::before {
   font-family: "Material Design Icons";
 }
+
+label {
+  font-weight: 500;
+  color: #323a46;
+}
+
+button:focus {
+  outline: none;
+}
+
+pre {
+  background-color: #f1f5f7;
+  border: 1px solid #e4ecf0;
+  padding: 7px;
+}
+
+.blockquote {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #f7f7f7;
+  font-size: 16px;
+}
+.blockquote.blockquote-reverse {
+  border-left: 0;
+  border-right: 4px solid #f7f7f7;
+  text-align: right;
+}
+
+dt {
+  font-weight: 500;
+}

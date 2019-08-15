@@ -95,5 +95,8 @@
         "vue-template-compiler": "^2.6.10",
         "waypoints": "^4.0.1",
         "x-editable": "^1.5.1"
+    },
+    "dependencies": {
+        "dragula": "^3.7.2"
     }
 }
