@@ -38576,7 +38576,7 @@ __webpack_require__(/*! node-waves */ "./node_modules/node-waves/src/js/waves.js
       return;
     }); // activate the menu in left side bar based on url
 
-    $(".navigation-menu a").each(function () {
+    $("#side-menu a").each(function () {
       var pageUrl = window.location.href.split(/[?#]/)[0];
 
       if (this.href == pageUrl) {
@@ -38596,13 +38596,6 @@ __webpack_require__(/*! node-waves */ "./node_modules/node-waves/src/js/waves.js
     $('.navbar-toggle').on('click', function (event) {
       $(this).toggleClass('open');
       $('#navigation').slideToggle(400);
-    });
-    $('.navigation-menu>li').slice(-2).addClass('last-elements');
-    $('.navigation-menu li.has-submenu a[href="#"]').on('click', function (e) {
-      if ($(window).width() < 992) {
-        e.preventDefault();
-        $(this).parent('li').toggleClass('open').find('.submenu:first').toggleClass('open');
-      }
     }); // Preloader
 
     $(window).on('load', function () {

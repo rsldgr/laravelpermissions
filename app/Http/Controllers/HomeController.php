@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $layout = 'layouts.dashboard';
+    
+
     /**
      * Create a new controller instance.
      *
