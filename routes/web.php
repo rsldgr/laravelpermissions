@@ -44,26 +44,26 @@ Route::namespace('Admin')->group(function () {
 
 
         Route::prefix('permissions')->name('permissions.')->group(function () {
-            Route::get('/', 'AdminController@index')->name('lists');
-            Route::get('/add', 'AdminController@index')->name('create');
-            Route::post('/add', 'AdminController@index')->name('store');
+            Route::get('/', 'PermissionController@index')->name('lists');
+            Route::get('/add', 'PermissionController@create')->name('create');
+            Route::post('/add', 'PermissionController@store')->name('store');
 
-            Route::get('/edit/{Permission}', 'AdminController@index')->name('edit');
-            Route::post('/edit/{Permission}', 'AdminController@index')->name('update');
+            Route::get('/edit/{permission}', 'PermissionController@edit')->name('edit');
+            Route::post('/edit/{permission}', 'PermissionController@update')->name('update');
 
-            Route::delete('/{Permission}', 'AdminController@index')->name('delete');
+            Route::delete('/{permission}', 'PermissionController@destroy')->name('delete');
         });
 
 
         Route::prefix('roles')->name('roles.')->group(function () {
-            Route::get('/', 'AdminController@index')->name('lists');
-            Route::get('/add', 'AdminController@index')->name('create');
-            Route::post('/add', 'AdminController@index')->name('store');
+            Route::get('/', 'RoleController@index')->name('lists');
+            Route::get('/add', 'RoleController@create')->name('create');
+            Route::post('/add', 'RoleController@store')->name('store');
 
-            Route::get('/edit/{Role}', 'AdminController@index')->name('edit');
-            Route::post('/edit/{Role}', 'AdminController@index')->name('update');
+            Route::get('/edit/{role}', 'RoleController@edit')->name('edit');
+            Route::post('/edit/{role}', 'RoleController@update')->name('update');
 
-            Route::delete('/{Role}', 'AdminController@index')->name('delete');
+            Route::delete('/{role}', 'RoleController@destroy')->name('delete');
         });
         
     });
