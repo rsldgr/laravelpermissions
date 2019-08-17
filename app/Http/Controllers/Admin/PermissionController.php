@@ -16,7 +16,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permission::paginate(15);
+        return view('admin.permissions.home',compact('permissions'));
     }
 
     /**
@@ -26,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.permissions.create');
     }
 
     /**
@@ -37,7 +38,18 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:permissions|min:5'
+        ]);
+
+        $permission = new Permission;
+        $permission->name = $request->name;
+        $permission->message = $request->message;
+        
+        $permission->save();
+
+        return redirect(route('admin.permissions.edit', $permission))->with('status', 'Permission Created!');
+
     }
 
     /**
@@ -57,9 +69,10 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        //
+        
+        return view('admin.permissions.edit',compact('permission'));
     }
 
     /**
@@ -69,9 +82,18 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:permissions,id,'.$permission->id.'|min:5'
+        ]);
+
+        $permission->name = $request->name;
+        $permission->message = $request->message;
+        
+        $permission->save();
+
+        return redirect(route('admin.permissions.edit', $permission))->with('status', 'Permission Created!');
     }
 
     /**
@@ -80,8 +102,8 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
     }
 }
