@@ -16,10 +16,16 @@ class CreatePermissionTables extends Migration
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
 
+        /**
+         * message sutunları rollere ver permissionlara
+         * detaylı bilgi vermek için yapıldı
+         */
+
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
+            $table->text('message')->nullable()->default(Null);
             $table->timestamps();
         });
 
@@ -27,6 +33,7 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
+            $table->text('message')->nullable()->default(Null);
             $table->timestamps();
         });
 
