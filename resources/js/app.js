@@ -8,6 +8,8 @@ require('./bootstrap');
 require('metismenu');
 require('jquery-slimscroll');
 require('node-waves');
+require('select2');
+
 
 
 !function ($) {
@@ -334,10 +336,11 @@ function ($) {
 function ($) {
     "use strict";
     $.App.init();
+
 }(window.jQuery);
 
+
 // Waves Effect
-Waves.init();
 
 //window.Vue = require('vue');
 

@@ -16,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(15);
+        //$roles = Rolee::paginate(15);
+        $roles = Role::with('permissions')->paginate(15);
         return view('admin.roles.home',compact('roles'));
     }
 
@@ -70,7 +71,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.roles.edit',compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.edit',compact('role','permissions'));
     }
 
     /**
