@@ -16,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::paginate(15);
+        return view('admin.roles.home',compact('roles'));
     }
 
     /**
@@ -26,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create');
     }
 
     /**
@@ -37,7 +38,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles|min:5'
+        ]);
+
+        $role = new Role;
+        $role->name = $request->name;
+        $role->message = $request->message;
+        
+        $role->save();
+
+        return redirect(route('admin.roles.edit', $role))->with('status', 'Role Created!');
     }
 
     /**
@@ -54,34 +65,44 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit',compact('role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles,id,'.$role->id.'|min:5'
+        ]);
+
+        $role->name = $request->name;
+        $role->message = $request->message;
+        
+        $role->save();
+
+        return redirect(route('admin.roles.edit', $role))->with('status', 'Role Created!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('admin.roles.lists');
     }
 }
