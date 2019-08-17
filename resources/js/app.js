@@ -336,12 +336,11 @@ function ($) {
 function ($) {
     "use strict";
     $.App.init();
-
 }(window.jQuery);
 
 
 // Waves Effect
-
+Waves.init();
 //window.Vue = require('vue');
 
 /**

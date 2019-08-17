@@ -85,13 +85,15 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' => 'required|unique:roles,id,'.$role->id.'|min:5'
+            'name' => 'required|unique:roles,id,'.$role->id.'|min:5',
+            'permissions' => 'nullable|exists:permissions,id|array'
         ]);
-
+        
         $role->name = $request->name;
         $role->message = $request->message;
         
         $role->save();
+        $role->syncPermissions($request->permissions);
 
         return redirect(route('admin.roles.edit', $role))->with('status', 'Role Created!');
     }
