@@ -37,6 +37,7 @@
                                                 <th>#</th>
                                                 <th>{{ __('Role Name') }}</th>
                                                 <th>{{ __('Message') }}</th>
+                                                <th>{{ __('Permissions') }}</th>
                                                 <th>{{ __('Actions') }}</th>
                                             </tr>
                                         </thead>
@@ -48,6 +49,7 @@
                                                     <th scope="row"><a class="text-dark" href="{{ route('admin.roles.edit',$role) }}">{{  $role->id }}</th>
                                                     <td><a class="text-dark" href="{{ route('admin.roles.edit',$role) }}">{{  $role->name }}</td>
                                                     <td><a class="text-dark" href="{{ route('admin.roles.edit',$role) }}">{{  $role->message }}</td>
+                                                    <td><a class="text-dark" href="{{ route('admin.roles.edit',$role) }}">{{  $role->permissions()->pluck('name')->implode(' , ') }}</td>
                                                     
                                                     <td>
                                                         <form class="form-inline float-left mr-1" method="POST" action="{{ route('admin.roles.delete',$role) }}">

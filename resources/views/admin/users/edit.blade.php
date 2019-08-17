@@ -48,6 +48,26 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                    <label for="permissions">{{ __('Role Permissions') }}</label>
+                                    
+                                    <select id="permissions" name="permissions[]" class="form-control select2 select2x select2-multiple" multiple="multiple" multiple data-placeholder="Choose ...">
+                                        @foreach ($permissions as $permission)
+                                            <option @if($user->permissions->contains($permission->id)) selected @endif value="{{ $permission->id }}">{{ $permission->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                        <label for="roles">{{ __('Role roles') }}</label>
+                                        
+                                        <select id="roles" name="roles[]" class="form-control select2 select2x select2-multiple" multiple="multiple" multiple data-placeholder="Choose ...">
+                                            @foreach ($roles as $role)
+                                                <option @if($user->roles->contains($role->id)) selected @endif value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -66,3 +86,13 @@
             <!-- end row -->
         
 @endsection
+
+
+@push('scripts')
+    <script src="{{ mix('js/form.js') }}" defer></script>
+@endpush
+
+@push('styles')
+    <link href="{{ mix('css/form.css') }}"  rel="stylesheet" type="text/css" />
+
+@endpush

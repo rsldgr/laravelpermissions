@@ -38,6 +38,7 @@
                                                 <th>{{ __('User Name') }}</th>
                                                 <th>{{ __('User Email') }}</th>
                                                 <th>{{ __('User Role(s)') }}</th>
+                                                <th>{{ __('User Permission(s)') }}</th>
                                                 <th>{{ __('Actions') }}</th>
                                             </tr>
                                         </thead>
@@ -49,7 +50,8 @@
                                                     <th scope="row"><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->id }}</th>
                                                     <td><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->name }}</td>
                                                     <td><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->email }}</td>
-                                                    <td><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->name }}</td>
+                                                    <td><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->roles()->pluck('name')->implode(' , ') }}</td>
+                                                    <td><a class="text-dark" href="{{ route('admin.users.edit',$user) }}">{{  $user->permissions()->pluck('name')->implode(' , ') }}</td>
                                                     <td>
                                                         <a class="btn btn-xs btn-icon waves-effect waves-light btn-danger text-white"> 
                                                             <i class="fas fa-times"></i> 

@@ -19,14 +19,17 @@ class UserController extends Controller
     }
     
     public function index(){
-        $users = User::paginate(20);
+        //$users = User::paginate(20);
+        $users = User::with('permissions')->with('roles')->paginate(25);
         return view('admin.users.home',compact('users'));
     }
     public function create(){
         return view('admin.users.create');
     }
     public function edit(User $user){
-        return view('admin.users.edit',compact('user'));
+        $permissions = Permission::all();
+        $roles = Role::all();
+        return view('admin.users.edit',compact('user','permissions','roles'));
     }
     public function update(User $user,UpdateUser $request){
         
@@ -37,8 +40,11 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             
         endif;
-
+        
         $user->save();
+        $user->syncPermissions($request->permissions);
+        $user->syncRoles($request->roles);
+
         return redirect(route('admin.users.edit', $user))->with('status', 'Profile updated!');
 
     }

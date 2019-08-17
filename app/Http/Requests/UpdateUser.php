@@ -32,6 +32,8 @@ class UpdateUser extends FormRequest
                 'min:4'
 
             ],
+            'permissions' => 'nullable|exists:permissions,id|array',
+            'roles' => 'nullable|exists:roles,id|array',
             'email' => 'required|email|unique:users,email,'.$userID.',id',
             'password' => 'nullable|min:8'
         ];
@@ -45,6 +47,11 @@ class UpdateUser extends FormRequest
             'email.required'  => 'A Email is required',
             'email.unique'  => 'A Email is unique',
             'email.email'  => 'A Email must be an Email',
+            'permissions.exists'  => 'Permissions must be Registered Permission',
+            'permissions.array'  => 'Permissions must be an Array',
+            
+            'roles.exists'  => 'Roles must be Registered Permission',
+            'roles.array'  => 'Roles must be an Array',
         ];
     }
 }
