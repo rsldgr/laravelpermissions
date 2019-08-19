@@ -217,7 +217,7 @@ function ($) {
     App.prototype._resetSidebarScroll = function () {
         // sidebar - scroll container
         $('.slimscroll-menu').slimscroll({
-            height: 'auto',
+            height: '100%',
             position: 'right',
             size: "8px",
             color: '#9ea5ab',

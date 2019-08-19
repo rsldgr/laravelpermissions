@@ -36,6 +36,9 @@ class UserController extends Controller
         $request->validated();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->is_admin = ($request->is_admin ? 1 : 0);
+        $user->is_banned = ($request->is_banned ? 1 : 0);
+        
         if($request->password):
             $user->password = Hash::make($request->password);
             

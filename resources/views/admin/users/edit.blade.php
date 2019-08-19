@@ -40,14 +40,25 @@
                                 <small id="passwordHelp" class="form-text text-muted">{{ __('Değiştirmek İstemiyorsanız Boş Bırakın') }}</small>
                                 @error('password')<small id="passwordError" class="form-text alert alert-danger">{{ $message }}</small>@enderror
                             </div>
+                            
+
                             <div class="form-group">
-                                <div class="checkbox">
-                                    <input id="checkbox0" type="checkbox">
-                                    <label for="checkbox0">
-                                        Check me out
-                                    </label>
+                                    <div class="checkbox">
+                                        <input id="is_admin" name="is_admin" value="1" type="checkbox" @if ($user->is_admin == 1 ) checked @endif>
+                                        <label for="is_admin">
+                                            {{ __('Is Admin') }}
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
+    
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input id="is_banned" name="is_banned" value="1" type="checkbox" @if ($user->is_banned == 1 ) checked @endif>
+                                        <label for="is_banned">
+                                            {{ __('Is Banned') }}
+                                        </label>
+                                    </div>
+                                </div>
                             <div class="form-group">
                                     <label for="permissions">{{ __('Role Permissions') }}</label>
                                     

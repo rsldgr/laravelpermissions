@@ -44412,7 +44412,7 @@ __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
   App.prototype._resetSidebarScroll = function () {
     // sidebar - scroll container
     $('.slimscroll-menu').slimscroll({
-      height: 'auto',
+      height: '100%',
       position: 'right',
       size: "8px",
       color: '#9ea5ab',

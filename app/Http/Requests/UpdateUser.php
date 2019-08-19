@@ -35,7 +35,9 @@ class UpdateUser extends FormRequest
             'permissions' => 'nullable|exists:permissions,id|array',
             'roles' => 'nullable|exists:roles,id|array',
             'email' => 'required|email|unique:users,email,'.$userID.',id',
-            'password' => 'nullable|min:8'
+            'password' => 'nullable|min:8',
+            'is_admin' => 'boolean|digits_between:0,1',
+            'is_banned' => 'boolean|digits_between:0,1',
         ];
     }
     public function messages()
