@@ -65,7 +65,7 @@
         "justgage": "^1.2.2",
         "katex": "^0.10.0-rc.1",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.21",
         "magnific-popup": "^1.1.0",
         "metismenu": "^2.7.9",
         "mohithg-switchery": "^0.8.4",
